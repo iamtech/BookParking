@@ -1,0 +1,9 @@
+ul, li {
+    display: inline;
+    padding-inline-start: 0px;
+  }
+
+#lane_space{
+    padding-bottom: 40px;
+}  
+  
