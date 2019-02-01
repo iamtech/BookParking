@@ -18,7 +18,8 @@ export class AppComponent {
         var seat = {
           id: seatIndex,
           caption: seatIndex,
-          booked: seatIndex < 2 // 0 to 5 booked
+          booked: seatIndex < 2, // 0 to 5 booked
+          active: seatIndex >= 2,
         };
         this.arr[row] = seat;
         seatIndex++;
@@ -26,11 +27,19 @@ export class AppComponent {
     return this.arr;
   }
 
-  selectParking(event,isBooked,spotNumber){
+  selectParking(event,isBooked,spotNumber,isActive){
     
     if(!isBooked){
       console.log('spot clicked: ',spotNumber);
-      event.srcElement.src="/assets/images/car_icon/car_selected_icon_1.png";
+      if(isActive){
+        event.srcElement.src="/assets/images/car_icon/car_selected_icon_1.png";
+        this.arr[spotNumber].active = false;
+      }
+      else{
+        event.srcElement.src="/assets/images/car_icon/car_vacant_icon_3.png";
+        this.arr[spotNumber].active = true;
+      }
+      
     }  
   }
 

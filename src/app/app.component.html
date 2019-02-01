@@ -3,12 +3,12 @@
     <div>
       <ul *ngFor="let row of arr">
           <li *ngIf="row.booked">
-              <a (click)="selectParking($event,row.booked,row.caption)">
+              <a (click)="selectParking($event,row.booked,row.caption,row.active)">
                 <img src="assets\images\car_icon\car_blocked_icon_1.png" [title]=row.caption>
               </a>
             </li>
             <li *ngIf="!row.booked">
-              <a (click)="selectParking($event,row.booked,row.caption)">
+              <a (click)="selectParking($event,row.booked,row.caption,row.active)">
                 <img src="assets\images\car_icon\car_vacant_icon_3.png" [title]=row.caption>
               </a>
           </li>
@@ -18,12 +18,12 @@
     <div>
         <ul *ngFor="let row of arr">
         <li *ngIf="row.booked">
-          <a (click)="selectParking($event,row.booked,row.caption)">
+          <a (click)="selectParking($event,row.booked,row.caption,row.active)">
             <img src="assets\images\car_icon\car_blocked_icon_1.png" [title]=row.caption> 
           </a>
         </li>
         <li *ngIf="!row.booked">
-            <a (click)="selectParking($event,row.booked,row.caption)">
+            <a (click)="selectParking($event,row.booked,row.caption,row.active)">
               <img src=" assets\images\car_icon\car_vacant_icon_4.png" [title]=row.caption>
             </a>
         </li>
@@ -32,12 +32,12 @@
       <div>
           <ul *ngFor="let row of arr">
               <li *ngIf="row.booked">
-                  <a (click)="selectParking($event,row.booked,row.caption)">
+                  <a (click)="selectParking($event,row.booked,row.caption,row.active)">
                     <img src="assets\images\car_icon\car_blocked_icon_1.png" [title]=row.caption>
                   </a>
                 </li>
                 <li *ngIf="!row.booked">
-            <a (click)="selectParking($event,row.booked,row.caption)">
+            <a (click)="selectParking($event,row.booked,row.caption,row.active)">
               <img src=" assets\images\car_icon\car_vacant_icon_3.png" [title]=row.caption>
             </a>
           </li>
