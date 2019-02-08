@@ -1,0 +1,108 @@
+<nz-header>
+    <div class="logo"></div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'horizontal'" style="line-height: 64px;">
+      <li nz-menu-item>Home</li>
+      <li nz-menu-item>User</li>
+      <li nz-menu-item>History</li>
+    </ul>
+  </nz-header>
+  
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+    <nz-form-item>
+        <nz-select style="width: 400px;    margin-left: 30%;" nzShowSearch nzAllowClear nzPlaceHolder="Select a Place" formControlName="seletedPlace">
+            <nz-option nzLabel="Place 1" nzValue="Place 1"></nz-option>
+            <nz-option nzLabel="Place 2" nzValue="Place 2"></nz-option>
+            <nz-option nzLabel="Place 3" nzValue="Place 3"></nz-option>
+        </nz-select>
+    </nz-form-item>
+
+    <div nz-row>  
+      <div nz-col nzSpan="8" nzOffset="4">
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" nzRequired>Entry Date</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <nz-date-picker formControlName="EntryDatePicker"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item >
+            <nz-form-label [nzSm]="8" nzRequired>Entry Time</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <nz-time-picker nzFormat="HH:mm" formControlName="EntryTimePicker"></nz-time-picker>
+            </nz-form-control>
+        </nz-form-item>
+        </div>
+  </div>
+  <div nz-row>  
+      <div nz-col nzSpan="8" nzOffset="4">
+        <nz-form-item>
+            <nz-form-label [nzSm]="8" nzRequired>Exit Date</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <nz-date-picker formControlName="EntryDatePicker"></nz-date-picker>
+            </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzSpan="8">
+        <nz-form-item >
+            <nz-form-label [nzSm]="8" nzRequired>Exit Time</nz-form-label>
+            <nz-form-control [nzSm]="16" [nzXs]="24">
+              <nz-time-picker nzFormat="HH:mm" formControlName="ExitTimePicker"></nz-time-picker>
+            </nz-form-control>
+        </nz-form-item>
+        </div>
+  </div>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="email" id="email">
+      <nz-form-explain *ngIf="validateForm.get('email').dirty && validateForm.get('email').errors">The input is not valid E-mail!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+ 
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired>
+      <span>
+        Nickname
+        <i nz-icon nz-tooltip nzTitle="What do you want other to call you" type="question-circle" theme="outline"></i>
+      </span>
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input id="nickname" formControlName="nickname">
+      <nz-form-explain *ngIf="validateForm.get('nickname').dirty && validateForm.get('nickname').errors">Please input your nickname!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" [nzValidateStatus]="validateForm.controls['phoneNumber']">
+      <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+        <ng-template #addOnBeforeTemplate>
+          <nz-select formControlName="phoneNumberPrefix" style="width: 70px;">
+            <nz-option nzLabel="+91" nzValue="+91"></nz-option>
+            <nz-option nzLabel="+91" nzValue="+91"></nz-option>
+          </nz-select>
+        </ng-template>
+        <input formControlName="phoneNumber" id="'phoneNumber'" nz-input>
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('phoneNumber').dirty && validateForm.get('phoneNumber').errors">Please input your phone number!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  
+  
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <label nz-checkbox formControlName="agree">
+        <span>I have read the <a>agreement</a></span>
+      </label>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Next</button>
+    </nz-form-control>
+  </nz-form-item>
+  
+</form>
